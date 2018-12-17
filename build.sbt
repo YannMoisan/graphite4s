@@ -42,6 +42,8 @@ pomExtra :=
 
 import sbtrelease.ReleaseStateTransformations._
 
+releaseCrossBuild := true
+
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
