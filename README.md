@@ -1,5 +1,7 @@
 # graphite4s
 
+[![Build Status](https://travis-ci.org/YannMoisan/graphite4s.svg?branch=master)](https://travis-ci.org/YannMoisan/graphite4s)
+
 A library for sending points to graphite.
 
 ## Project goals
