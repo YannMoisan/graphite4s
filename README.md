@@ -27,7 +27,10 @@ import cats.effect._
 
 object Example {
   implicit val clock: Clock[IO] = Clock.create[IO]
-  val graphite = new BatchGraphite(new JavaTCPClient[IO]("localhost", 2003))
-  graphite.send(GraphitePoint("path", 42.0, Instant.now))
+  val graphite = new BatchGraphite(new JavaTCPClient("localhost", 2003))
+  (for {
+    now <- clock.realTime(MILLISECONDS)
+    req <- graphite.send(GraphitePoint("path", 42.0, Instant.ofEpochMilli(now)))
+  } yield req).unsafeRunSync()
 }
 ```
