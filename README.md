@@ -21,7 +21,7 @@ libraryDependencies += "com.yannmoisan" %% "graphite4s" % Version
 
 ## Usage
 
-```
+```scala
 import java.time.Instant
 import cats.effect._
 
