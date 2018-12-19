@@ -34,7 +34,7 @@ class GraphiteTest extends FlatSpec with Matchers {
     val mockClient = new MockClient()
     val graphite = new BaseGraphite(mockClient, new Prefixer("production"))
 
-    graphite.send(Seq(p1, p2))
+    graphite.send(List(p1, p2))
 
     mockClient.messages should contain theSameElementsInOrderAs Seq(
       "production.root.1 1.0 11\n",
@@ -47,7 +47,7 @@ class GraphiteTest extends FlatSpec with Matchers {
     val graphite =
       new BatchGraphite(mockClient, transformer = new Prefixer("production"))
 
-    graphite.send(Seq(p1, p2))
+    graphite.send(List(p1, p2))
 
     mockClient.messages should contain theSameElementsInOrderAs Seq(
       "production.root.1 1.0 11\nproduction.root.2 2.0 22\n"
@@ -61,7 +61,7 @@ class GraphiteTest extends FlatSpec with Matchers {
                         batchSize = 2,
                         transformer = new Prefixer("production"))
 
-    graphite.send(Seq(p1, p2, p3))
+    graphite.send(List(p1, p2, p3))
 
     mockClient.messages should contain theSameElementsInOrderAs Seq(
       "production.root.1 1.0 11\nproduction.root.2 2.0 22\n",
