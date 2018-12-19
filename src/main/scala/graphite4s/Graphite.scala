@@ -6,7 +6,7 @@ import com.typesafe.scalalogging.LazyLogging
 
 trait Graphite[M[_]] extends LazyLogging {
   def send(point: GraphitePoint): M[Unit]
-  def send(points: Seq[GraphitePoint]): M[Unit]
+  def send(points: List[GraphitePoint]): M[Unit]
 }
 
 class BaseGraphite[M[_]: Applicative](
@@ -17,9 +17,9 @@ class BaseGraphite[M[_]: Applicative](
     client.send(
       GraphitePoint.format(transformer.transform(point)).getBytes("UTF-8"))
 
-  override def send(points: Seq[GraphitePoint]): M[Unit] = {
+  override def send(points: List[GraphitePoint]): M[Unit] = {
     logger.info(s"#${points.length} points to send to graphite")
-    points.toList.traverse_(send)
+    points.traverse_(send)
   }
 }
 
@@ -28,7 +28,7 @@ class BatchGraphite[M[_]: Applicative](
     batchSize: Int = 1000,
     transformer: Transformer = NoTransformer
 ) extends BaseGraphite[M](client, transformer) {
-  override def send(points: Seq[GraphitePoint]): M[Unit] =
+  override def send(points: List[GraphitePoint]): M[Unit] =
     points
       .grouped(batchSize)
       .toList
