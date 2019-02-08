@@ -10,7 +10,7 @@ trait Graphite[M[_]] extends LazyLogging {
 }
 
 class BaseGraphite[M[_]: Applicative](
-    client: TCPClient[M],
+    client: Client[M],
     transformer: Transformer = NoTransformer
 ) extends Graphite[M] {
   override def send(point: GraphitePoint): M[Unit] =
@@ -24,7 +24,7 @@ class BaseGraphite[M[_]: Applicative](
 }
 
 class BatchGraphite[M[_]: Applicative](
-    client: TCPClient[M],
+    client: Client[M],
     batchSize: Int = 1000,
     transformer: Transformer = NoTransformer
 ) extends BaseGraphite[M](client, transformer) {
