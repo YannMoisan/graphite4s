@@ -2,3 +2,15 @@ language: scala
 scala:
 - 2.11.12
 - 2.12.10
+
+# https://www.scala-sbt.org/1.x/docs/Travis-CI-with-sbt.html#Caching
+cache:
+  directories:
+    - $HOME/.cache/coursier
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
+
+before_cache:
+  - rm -fv $HOME/.ivy2/.sbt.ivy.lock
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt        -name "*.lock"               -print -delete
