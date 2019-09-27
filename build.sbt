@@ -2,7 +2,7 @@ import Dependencies._
 import sbt.Keys._
 
 organization := "com.yannmoisan"
-crossScalaVersions := Seq("2.11.11", "2.12.8")
+crossScalaVersions := Seq("2.11.12", "2.12.10")
 
 scalacOptions += "-Ypartial-unification"
 scalafmtOnCompile := true
