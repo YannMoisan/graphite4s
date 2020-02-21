@@ -3,11 +3,12 @@ package graphite4s
 import java.time.Instant
 
 import cats.Id
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.mutable.ArrayBuffer
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class GraphiteTest extends FlatSpec with Matchers {
+class GraphiteTest extends AnyFlatSpec with Matchers {
 
   private class MockClient extends TCPClient[Id] {
     val messages = new ArrayBuffer[String]()
