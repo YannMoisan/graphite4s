@@ -48,6 +48,8 @@ pomExtra :=
     </developer>
   </developers>
 
+publishTo := sonatypePublishToBundle.value
+
 import sbtrelease.ReleaseStateTransformations._
 
 releaseCrossBuild := true
