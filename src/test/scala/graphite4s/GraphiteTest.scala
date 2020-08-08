@@ -23,17 +23,16 @@ class GraphiteTest extends AnyFlatSpec with Matchers {
 
   "BaseGraphite" should "send one message" in {
     val mockClient = new MockClient()
-    val graphite = new BaseGraphite(mockClient, new Prefixer("production"))
+    val graphite   = new BaseGraphite(mockClient, new Prefixer("production"))
 
     graphite.send(p1)
 
-    mockClient.messages should contain theSameElementsInOrderAs Seq(
-      "production.root.1 1.0 11\n")
+    mockClient.messages should contain theSameElementsInOrderAs Seq("production.root.1 1.0 11\n")
   }
 
   it should "send two messages sequentially" in {
     val mockClient = new MockClient()
-    val graphite = new BaseGraphite(mockClient, new Prefixer("production"))
+    val graphite   = new BaseGraphite(mockClient, new Prefixer("production"))
 
     graphite.send(List(p1, p2))
 
@@ -58,9 +57,7 @@ class GraphiteTest extends AnyFlatSpec with Matchers {
   it should "send 3 messages in batch of two messages" in {
     val mockClient = new MockClient()
     val graphite =
-      new BatchGraphite(mockClient,
-                        batchSize = 2,
-                        transformer = new Prefixer("production"))
+      new BatchGraphite(mockClient, batchSize = 2, transformer = new Prefixer("production"))
 
     graphite.send(List(p1, p2, p3))
 

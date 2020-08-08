@@ -14,8 +14,7 @@ class BaseGraphite[M[_]: Applicative](
     transformer: Transformer = NoTransformer
 ) extends Graphite[M] {
   override def send(point: GraphitePoint): M[Unit] =
-    client.send(
-      GraphitePoint.format(transformer.transform(point)).getBytes("UTF-8"))
+    client.send(GraphitePoint.format(transformer.transform(point)).getBytes("UTF-8"))
 
   override def send(points: List[GraphitePoint]): M[Unit] = {
     logger.info(s"#${points.length} points to send to graphite")
@@ -36,6 +35,7 @@ class BatchGraphite[M[_]: Applicative](
         client.send(
           GraphitePoint
             .format(grouped.map(transformer.transform))
-            .getBytes("UTF-8"))
+            .getBytes("UTF-8")
+        )
       }
 }

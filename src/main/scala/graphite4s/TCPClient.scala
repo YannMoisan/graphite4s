@@ -32,9 +32,8 @@ class JavaTCPClient[F[_]](
 
   def send(message: Array[Byte]): F[Unit] =
     for {
-      start <- implicitly[Clock[F]].monotonic(MILLISECONDS)
-      _ <- outputStreamFor().use(outputStream =>
-        Sync[F].delay(outputStream.write(message)))
+      start  <- implicitly[Clock[F]].monotonic(MILLISECONDS)
+      _      <- outputStreamFor().use(outputStream => Sync[F].delay(outputStream.write(message)))
       finish <- implicitly[Clock[F]].monotonic(MILLISECONDS)
     } yield logger.info(s"[send] duration: ${finish - start} ms.")
 }
