@@ -3,11 +3,9 @@ package graphite4s
 import java.io.{DataOutputStream, OutputStream}
 import java.net.{InetAddress, Socket}
 
-import cats.effect.{Clock, Resource, Sync}
+import cats.effect.kernel.{Clock, Resource, Sync}
 import cats.implicits._
 import com.typesafe.scalalogging.LazyLogging
-
-import scala.concurrent.duration.MILLISECONDS
 
 trait TCPClient[M[_]] {
   def send(message: Array[Byte]): M[Unit]
@@ -32,8 +30,8 @@ class JavaTCPClient[F[_]](
 
   def send(message: Array[Byte]): F[Unit] =
     for {
-      start  <- implicitly[Clock[F]].monotonic(MILLISECONDS)
+      start  <- Clock[F].monotonic
       _      <- outputStreamFor().use(outputStream => Sync[F].delay(outputStream.write(message)))
-      finish <- implicitly[Clock[F]].monotonic(MILLISECONDS)
-    } yield logger.info(s"[send] duration: ${finish - start} ms.")
+      finish <- Clock[F].monotonic
+    } yield logger.info(s"[send] duration: ${finish.min(start).toMillis} ms.")
 }
