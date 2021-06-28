@@ -33,5 +33,5 @@ class JavaTCPClient[F[_]](
       start  <- Clock[F].monotonic
       _      <- outputStreamFor().use(outputStream => Sync[F].delay(outputStream.write(message)))
       finish <- Clock[F].monotonic
-    } yield logger.info(s"[send] duration: ${finish.min(start).toMillis} ms.")
+    } yield logger.info(s"[send] duration: ${finish.minus(start).toMillis} ms.")
 }
