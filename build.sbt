@@ -1,7 +1,7 @@
 import Dependencies._
 import sbt.Keys._
 
-organization := "com.yannmoisan"
+organization       := "com.yannmoisan"
 crossScalaVersions := Seq("2.11.12", "2.12.14", "2.13.6")
 
 def priorTo2_13(scalaVersion: String): Boolean =
@@ -39,7 +39,7 @@ publishTo := {
       Opts.resolver.sonatypeStaging
   )
 }
-publishMavenStyle := true
+publishMavenStyle       := true
 publishArtifact in Test := false
 pomIncludeRepository := { _ =>
   false
