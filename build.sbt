@@ -2,7 +2,7 @@ import Dependencies._
 import sbt.Keys._
 
 organization       := "com.yannmoisan"
-crossScalaVersions := Seq("2.11.12", "2.12.15", "2.13.7")
+crossScalaVersions := Seq("2.12.15", "2.13.7")
 
 def priorTo2_13(scalaVersion: String): Boolean =
   CrossVersion.partialVersion(scalaVersion) match {
