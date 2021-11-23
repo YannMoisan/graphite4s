@@ -20,17 +20,19 @@ libraryDependencies += "com.yannmoisan" %% "graphite4s" % Version
 ```
 
 ## Usage
-
+Add the following to your build.sbt:
 ```scala
-import java.time.Instant
-import cats.effect._
-
+libraryDependencies += "org.typelevel" %% "cats-effect" % "3.2.9"
+```
+Add the following code to your Example.scala:
+```scala
+import cats.effect.IO
+import cats.effect.unsafe.implicits.global
 object Example {
-  implicit val clock: Clock[IO] = Clock.create[IO]
-  val graphite = new BatchGraphite(new JavaTCPClient("localhost", 2003))
+  val graphite = new BatchGraphite(new JavaTCPClient[IO]("localhost", 2003))
   (for {
-    now <- clock.realTime(MILLISECONDS)
-    req <- graphite.send(GraphitePoint("path", 42.0, Instant.ofEpochMilli(now)))
+    now <- Clock[IO].realTime
+    req <- graphite.send(GraphitePoint("path", 42.0, Instant.ofEpochMilli(now.toMillis)))
   } yield req).unsafeRunSync()
 }
 ```

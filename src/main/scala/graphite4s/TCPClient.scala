@@ -11,11 +11,10 @@ trait TCPClient[M[_]] {
   def send(message: Array[Byte]): M[Unit]
 }
 
-class JavaTCPClient[F[_]](
+class JavaTCPClient[F[_]: Sync](
     host: String,
     port: Int
-)(implicit sync: Sync[F], clock: Clock[F])
-    extends TCPClient[F]
+) extends TCPClient[F]
     with LazyLogging {
   @SuppressWarnings(Array("org.wartremover.warts.Any"))
   private def outputStreamFor(): Resource[F, OutputStream] =
