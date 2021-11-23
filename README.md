@@ -25,12 +25,13 @@ libraryDependencies += "com.yannmoisan" %% "graphite4s" % Version
 import java.time.Instant
 import cats.effect._
 
-object Example {
-  implicit val clock: Clock[IO] = Clock.create[IO]
-  val graphite = new BatchGraphite(new JavaTCPClient("localhost", 2003))
-  (for {
-    now <- clock.realTime(MILLISECONDS)
-    req <- graphite.send(GraphitePoint("path", 42.0, Instant.ofEpochMilli(now)))
-  } yield req).unsafeRunSync()
+object Example extends IOApp.Simple {
+  override def run: IO[Unit] = {
+    val graphite = new BatchGraphite(new JavaTCPClient[IO]("localhost", 2003))
+    (for {
+      now <- Clock[IO].realTime
+      req <- graphite.send(GraphitePoint("path", 42.0, Instant.ofEpochMilli(now.toMillis)))
+    } yield req)
+  }
 }
 ```
