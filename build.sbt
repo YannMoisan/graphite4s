@@ -4,15 +4,6 @@ import sbt.Keys._
 organization       := "com.yannmoisan"
 crossScalaVersions := Seq("2.12.15", "2.13.8")
 
-def priorTo2_13(scalaVersion: String): Boolean =
-  CrossVersion.partialVersion(scalaVersion) match {
-    case Some((2, minor)) if minor < 13 => true
-    case _                              => false
-  }
-
-scalacOptions ++= {
-  if (priorTo2_13(scalaVersion.value)) Seq("-Ypartial-unification") else Nil
-}
 scalafmtOnCompile := true
 
 libraryDependencies ++= Seq(
