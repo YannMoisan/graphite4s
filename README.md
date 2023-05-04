@@ -1,6 +1,6 @@
 # graphite4s
 
-[![Build Status](https://travis-ci.org/YannMoisan/graphite4s.svg?branch=master)](https://travis-ci.org/YannMoisan/graphite4s) 
+![Build status](https://github.com/YannMoisan/graphite4s/actions/workflows/build.yml/badge.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.yannmoisan/graphite4s_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.yannmoisan/graphite4s_2.12)
 [![License](https://img.shields.io/github/license/yannmoisan/graphite4s)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
