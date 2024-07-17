@@ -2,14 +2,15 @@ import Dependencies._
 import sbt.Keys._
 
 organization       := "com.yannmoisan"
-crossScalaVersions := Seq("2.12.17", "2.13.14")
+crossScalaVersions := Seq("2.12.19", "2.13.14")
 
 scalafmtOnCompile := true
 
 libraryDependencies ++= Seq(
-  catsEffect,
+  catsEffectKernel,
   scalaLogging,
-  scalaTest % Test
+  catsEffect % Test,
+  scalaTest  % Test
 )
 
 startYear := Some(2018)
