@@ -2,6 +2,7 @@
 
 ![Build status](https://github.com/YannMoisan/graphite4s/actions/workflows/build.yml/badge.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.yannmoisan/graphite4s_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.yannmoisan/graphite4s_2.12)
+[![codecov](https://codecov.io/github/YannMoisan/graphite4s/graph/badge.svg?token=37WNLGADEH)](https://codecov.io/github/YannMoisan/graphite4s)
 [![License](https://img.shields.io/github/license/yannmoisan/graphite4s)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 A library for sending points to graphite.
