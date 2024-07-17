@@ -23,6 +23,8 @@ scmInfo := Some(
   )
 )
 
+ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
+
 Test / publishArtifact := false
 pomIncludeRepository := { _ =>
   false
