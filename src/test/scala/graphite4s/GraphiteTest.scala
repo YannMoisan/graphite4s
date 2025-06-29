@@ -11,7 +11,7 @@ import org.scalatest.matchers.should.Matchers
 class GraphiteTest extends AnyFlatSpec with Matchers {
 
   private class MockClient extends TCPClient[Id] {
-    val messages = new ArrayBuffer[String]()
+    val messages                       = new ArrayBuffer[String]()
     def send(s: Array[Byte]): Id[Unit] = {
       val _ = messages += new String(s)
     }
@@ -44,7 +44,7 @@ class GraphiteTest extends AnyFlatSpec with Matchers {
 
   "BatchGraphite" should "send two messages in batch" in {
     val mockClient = new MockClient()
-    val graphite =
+    val graphite   =
       new BatchGraphite(mockClient, transformer = new Prefixer("production"))
 
     graphite.send(List(p1, p2))
@@ -56,7 +56,7 @@ class GraphiteTest extends AnyFlatSpec with Matchers {
 
   it should "send 3 messages in batch of two messages" in {
     val mockClient = new MockClient()
-    val graphite =
+    val graphite   =
       new BatchGraphite(mockClient, batchSize = 2, transformer = new Prefixer("production"))
 
     graphite.send(List(p1, p2, p3))
