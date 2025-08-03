@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
 startYear := Some(2018)
 licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
 homepage := Some(url("https://github.com/yannmoisan/graphite4s"))
-scmInfo := Some(
+scmInfo  := Some(
   ScmInfo(
     url("https://github.com/yannmoisan/graphite4s"),
     "git@github.com:yannmoisan/graphite4s.git"
@@ -24,7 +24,7 @@ scmInfo := Some(
 )
 
 Test / publishArtifact := false
-pomIncludeRepository := { _ =>
+pomIncludeRepository   := { _ =>
   false
 }
 pomExtra :=
