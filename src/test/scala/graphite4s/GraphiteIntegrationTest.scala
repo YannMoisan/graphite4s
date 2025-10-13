@@ -46,7 +46,7 @@ class GraphiteIntegrationTest extends AnyFlatSpec with Matchers {
     }
 
     class ClientHandler(socket: Socket) extends Thread {
-      val messages = new ArrayBuffer[String]()
+      val messages             = new ArrayBuffer[String]()
       override def run(): Unit =
         try {
           val in  = new BufferedReader(new InputStreamReader(socket.getInputStream))
