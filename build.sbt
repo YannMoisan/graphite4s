@@ -1,8 +1,12 @@
 import Dependencies._
 import sbt.Keys._
 
+val Scala_2_12 = "2.12.19"
+val Scala_2_13 = "2.13.14"
+
 organization       := "com.yannmoisan"
-crossScalaVersions := Seq("2.12.19", "2.13.14")
+scalaVersion       := Scala_2_12
+crossScalaVersions := Seq(Scala_2_12, Scala_2_13)
 
 scalafmtOnCompile := true
 
