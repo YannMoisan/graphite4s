@@ -3,10 +3,11 @@ import sbt.Keys._
 
 val Scala_2_12 = "2.12.21"
 val Scala_2_13 = "2.13.18"
+val Scala_3_3  = "3.3.7"
 
 organization       := "com.yannmoisan"
 scalaVersion       := Scala_2_12
-crossScalaVersions := Seq(Scala_2_12, Scala_2_13)
+crossScalaVersions := Seq(Scala_2_12, Scala_2_13, Scala_3_3)
 
 scalafmtOnCompile := true
 
