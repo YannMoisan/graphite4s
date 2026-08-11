@@ -1,7 +1,7 @@
 # graphite4s
 
 ![Build status](https://github.com/YannMoisan/graphite4s/actions/workflows/build.yml/badge.svg)
-[![graphite4s Scala version support](https://index.scala-lang.org/yannmoisan/graphite4s/graphite4s/latest.svg)](https://index.scala-lang.org/yannmoisan/graphite4s/graphite4s)
+[![Maven Central](https://img.shields.io/maven-central/v/com.yannmoisan/graphite4s_2.13.svg)](https://search.maven.org/artifact/com.yannmoisan/graphite4s_2.13)
 [![codecov](https://codecov.io/github/YannMoisan/graphite4s/graph/badge.svg?token=37WNLGADEH)](https://codecov.io/github/YannMoisan/graphite4s)
 [![License](https://img.shields.io/github/license/yannmoisan/graphite4s)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
