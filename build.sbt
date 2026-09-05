@@ -2,7 +2,7 @@ import Dependencies._
 import sbt.Keys._
 
 val Scala_2_12 = "2.12.21"
-val Scala_2_13 = "2.13.18"
+val Scala_2_13 = "3.9.0"
 val Scala_3_3  = "3.3.8"
 
 organization       := "com.yannmoisan"
