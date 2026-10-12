@@ -19,7 +19,7 @@ libraryDependencies ++= Seq(
 )
 
 startYear := Some(2018)
-licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
+licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt"))
 homepage := Some(url("https://github.com/yannmoisan/graphite4s"))
 scmInfo  := Some(
   ScmInfo(
