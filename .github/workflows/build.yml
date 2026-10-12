@@ -18,12 +18,12 @@ jobs:
       uses: actions/setup-java@v5
       with:
         distribution: temurin
-        java-version: 8
+        java-version: 17
         cache: sbt
     - name: Setup sbt launcher
       uses: sbt/setup-sbt@v1
     - name: Run tests
-      run: sbt coverage +test
+      run: sbt "coverage; +test"
     - name: Coverage report
       run: sbt coverageReport
     - name: Upload coverage reports to Codecov
@@ -40,9 +40,9 @@ jobs:
       uses: actions/setup-java@v5
       with:
         distribution: temurin
-        java-version: 8
+        java-version: 17
         cache: sbt
     - name: Setup sbt launcher
       uses: sbt/setup-sbt@v1
     - name: Formatting
-      run: sbt scalafmtSbtCheck scalafmtCheck test:scalafmtCheck
+      run: sbt "scalafmtSbtCheck; scalafmtCheckAll"
